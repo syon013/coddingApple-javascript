@@ -1,0 +1,35 @@
+*{
+    margin : 0;
+    padding : 0;
+}
+
+.alert-box{
+    width : 600px;
+    height : 20px;
+    background-color : skyblue;
+    padding : 20px;
+    margin : 20px;
+    border-radius : 5px;
+    display : none;
+    position : relative;
+    float : left;
+}
+
+.alert-box button{
+    border : none;
+    font-size: 20px;
+    background-color: transparent;
+    float : right;
+    position : absolute;
+    top : 20px;
+    left : 600px;
+}
+
+.btn-box{
+    width : 70px;
+    height : 30px;
+    background-color : red;
+    color : white;
+    border-color : red;
+    border-radius : 5px;
+}

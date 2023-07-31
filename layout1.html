@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="layout1.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="alert" class="alert-box">
+        <p><strong>Holy guacamole!</strong> You should check in on some of those fields below.</p>
+            <button onclick="closeBox()">X</button>
+        </p>
+    </div>
+
+    <div style="clear: both;"></div>
+
+    <button class="btn-box" onclick="alertBox()">띄우기</button>
+    
+    <script>
+
+        function alertBox(){
+
+            document.getElementById('alert').style.display='block';
+
+        //     var alert = document.getElementById("alert");
+
+        //     if(alert.style.display == "none"){
+        //         alert.style.display = "block";
+        //     }else{
+        //         alert.style.display = "none";
+        //     }
+        }
+
+        function closeBox(){
+            document.getElementById('alert').style.display='none';
+        }
+        
+        
+    </script>
+</body>
+</html>
