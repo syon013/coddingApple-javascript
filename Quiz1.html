@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Quiz.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="input" placeholder="숫자를 입력하세요.">
+    <button type="button" id="button">확인</button>
+
+    <div id="result"></div>
+
+    <script>
+
+        
+
+        document.querySelector('#button').addEventListener('click', function(){
+            
+            var val = document.querySelector('#input').value
+
+            val = val.toString();
+            valDigit = val.slice(-1);
+
+                if(valDigit % 9 === 0 ){
+                    document.querySelector('#result').innerHTML = "박수x2";
+                } else if (valDigit % 3 === 0){
+                    document.querySelector('#result').innerHTML = "박수"
+                } else {
+                    document.querySelector('#result').innerHTML = "통과";
+                }
+            
+        })
+
+
+        function 삼육구게임(val){
+            val = val.toString();
+            valDigit = val.slice(-1);
+
+            if(valDigit % 9 === 0){
+                console.log('박수x2');
+            } else if(valDigit % 3 === 0){
+                console.log('박수');
+            } else {
+                console.log('통과');
+            }
+        }
+
+
+        function 합격여부확인(gae, min){
+            if(gae < 40 || min < 40){
+                console.log('불합격');
+            } else if((gae+min) < 120){
+                console.log('불합격');
+            } else {
+                console.log('합격');
+            }
+        }
+
+        function 합격판독기(num){
+            if(isNaN(num) || num < 0 || num > 100){
+                alert('0~100 사이의 숫자를 입력하세요.');
+            } else {
+                alert('입력하신 숫자는 ' + num + '입니다.');
+            }
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
