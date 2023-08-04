@@ -67,8 +67,12 @@
 
       if(input === ''){
         alert('아이디를 입력해주세요.');
+      } else if(/\S+@\S+\.\S+/.test(input) == false){
+        alert('이메일 형식으로 입력해주세요.');
       } else if (input2 === '' || pw < 6){ 
         alert('패스워드를 6자 이상 입력해주세요.');
+      } else if(/[A-Z]/.test(input2) == false) {
+        alert('패스워드에 대문자도 한 글자 이상 포함되어야 합니다.') 
       } else {
         location.href = 'success.html';
       }
@@ -124,6 +128,27 @@
 
         
 
+    </script>
+
+    <div class="alert alert-danger">
+      <p><h1 class="d-inline-block" id="text-timer">5</h1>초 이내 구매시 사은품 증정!</p>
+    </div>
+
+    <script>
+
+      setTimeout(function(){
+        document.querySelector('.alert').style.display = 'none';
+      }, 5000);
+    
+      setInterval(function(){
+        let textTimer = document.querySelector('#text-timer');
+
+        if(textTimer.innerHTML > 0){
+          textTimer.innerHTML--;
+        } else {
+          document.querySelector('.alert').style.display = 'none';
+        }}, 1000);
+     
     </script>
 
 
