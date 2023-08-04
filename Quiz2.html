@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Quiz2.css" rel="stylesheet" type="text/css" media="all">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer">
+    <button id="send-answer">제출</button>
+
+    <script>
+
+        let count = 0;
+
+        document.querySelector('#send-answer').addEventListener('click', function(){
+            let answer = document.querySelector('#answer').value;
+            
+            if(count >= 3){
+            alert('너 진짜 구제불능이구나?');
+            count = 0;
+            return;
+            }    
+
+
+            if(answer === '1335'){
+            alert('정답입니다.');
+            count = 0;
+            } else if(answer !== '1335'){
+            alert('멍청아 다시해');
+            count++;
+            } 
+
+     
+        });
+
+
+    </script>
+    <div>
+        <p>이율 계산하기</p>
+        <input type="text" id="input" placeholder="숫자를 입력하세요.">
+        <button type="button" id="button">확인</button>
+    </div>
+    <script>
+
+    let age = 30;
+    const place = "충남";
+
+
+    var first = 360;
+
+    function refill(first){
+        second = (2/3) * first;
+        third = (2/3) * second;
+
+        re = first + second + third;
+
+        console.log(re);
+    }
+
+
+        var deposit_amount = 60000;
+        var future_deposit_amount = 0;
+    
+        document.querySelector('#button').addEventListener('click', function(){
+        deposit_amount = document.querySelector('#input').value;
+        deposit_amount = parseInt(deposit_amount);
+
+        if (deposit_amount >= 50000) {
+            future_deposit_amount = Math.round(deposit_amount * (1.2 ** 2));
+            alert(future_deposit_amount);
+        
+        } else if(deposit_amount < 50000){
+            future_deposit_amount = Math.round(deposit_amount * (1.15 ** 2));
+            alert(future_deposit_amount);
+            
+        } else {
+            alert('숫자를 입력하세요.');
+        }});
+    
+
+    </script>
+
+    
+
+    
+</body>
+</html>
