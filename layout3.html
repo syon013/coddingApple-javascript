@@ -150,7 +150,76 @@
         }}, 1000);
      
     </script>
+  
+  <div style="overflow: hidden;">
+    <div class="slide-container">
+      <div class="slide-box">
+        <img src="/img/car1.png">
+      </div>
+      <div class="slide-box">
+        <img src="/img/car2.png">
+      </div>
+      <div class="slide-box">
+        <img src="/img/car3.png">
+      </div>
+    </div>
+  </div>  
+  
+  <button class="prev">이전</button>
+  <button class="slide-1">1</button>
+  <button class="slide-2">2</button>
+  <button class="slide-3">3</button>
+  <button class="next">다음</button>
 
+  <script>
+
+    const slideContainer = document.querySelector('.slide-container');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    let slideIndex = 0;
+    const images = ['/img/car1.png', '/img/car2.png', '/img/car3.png'];
+
+    prev.addEventListener('click', function(){
+      slideIndex--;
+      const translateXValue = -slideIndex * 100;
+
+      if(slideIndex < 0){
+          slideIndex = images.length - 1;
+          slideContainer.style.transform = `translateX(-${slideIndex * 100}vw)`;
+      } else {
+      slideContainer.style.transform = `translateX(${translateXValue}vw)`; 
+      }
+    })
+
+    document.querySelector('.slide-1').addEventListener('click', function(){
+      slideContainer.style.transform = 'translateX(0)';
+    })
+    
+    document.querySelector('.slide-2').addEventListener('click', function(){
+      slideContainer.style.transform = 'translateX(-100vw)';
+    })
+
+    document.querySelector('.slide-3').addEventListener('click', function(){
+      slideContainer.style.transform = 'translateX(-200vw)';
+    })
+
+    next.addEventListener('click', function(){
+      slideIndex++;
+      const translateXValue = -slideIndex * 100;
+      
+
+      if(slideIndex >= images.length){
+          slideIndex = 0;
+          slideContainer.style.transform = 'translateX(0)';
+      } else {
+        slideContainer.style.transform = `translateX(${translateXValue}vw)`; 
+      }
+    })
+    
+
+    
+
+  </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
