@@ -32,64 +32,79 @@
     </div>
   </div>
 
-  <div>
-    <span class="badge bg-dark">Dark 🔄</span>
-  </div>
-
-  <script>
-
-    //badge 클릭 횟수가 홀수면 내부 글자 Light로 변경
-    //badge 클릭 횟수가 짝수면 내부 글자 Dark로 변경
-
-    var count = 0;
-
-    document.querySelector('.badge').addEventListener('click', function(){
-      count++;
-      
-      if(count % 2 === 0){
-        document.querySelector('.badge').innerHTML = 'Dark 🔄';
-        document.querySelector('.mode').classList.add('dark');
-      } else {
-        document.querySelector('.badge').innerHTML = 'Light 🔄';
-        document.querySelector('.mode').classList.remove('dark');
-      }
-    })
-
-    //전송 버튼을 누르면 input에 입력한 값이 공백이면 알림창 띄우고, 
-    //공백이 아니면 success.html로 이동
-    
-    document.querySelector('form').addEventListener('submit',function(){
-
-      event.preventDefault();
-      var input = document.querySelector('.text-input').value;
-      var input2 = document.querySelector('.password-input').value;
-      var pw = document.querySelector('.password-input').value.length;
-
-      if(input === ''){
-        alert('아이디를 입력해주세요.');
-      } else if(/\S+@\S+\.\S+/.test(input) == false){
-        alert('이메일 형식으로 입력해주세요.');
-      } else if (input2 === '' || pw < 6){ 
-        alert('패스워드를 6자 이상 입력해주세요.');
-      } else if(/[A-Z]/.test(input2) == false) {
-        alert('패스워드에 대문자도 한 글자 이상 포함되어야 합니다.') 
-      } else {
-        location.href = 'success.html';
-      }
-    })
-
-  </script>
-
   
     <div class="list-fade">
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand">Navbar</span>
+          <span class="badge bg-dark">Dark 🔄</span>
           <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
       </nav> 
+
+      <script>
+
+        window.addEventListener('scroll', function(){
+          if (window.scrollY > 100){
+            document.querySelector('.navbar-brand').style.fontSize = '0.5rem';
+          } else {
+            document.querySelector('.navbar-brand').style.fontSize = '1rem';
+          }
+        })
+
+      </script>
+
+      
+
+
+
+<script>
+
+  //badge 클릭 횟수가 홀수면 내부 글자 Light로 변경
+  //badge 클릭 횟수가 짝수면 내부 글자 Dark로 변경
+
+  var count = 0;
+
+  document.querySelector('.badge').addEventListener('click', function(){
+    count++;
+    
+    if(count % 2 === 0){
+      document.querySelector('.badge').innerHTML = 'Dark 🔄';
+      document.querySelector('.mode').classList.add('dark');
+    } else {
+      document.querySelector('.badge').innerHTML = 'Light 🔄';
+      document.querySelector('.mode').classList.remove('dark');
+    }
+  })
+
+  //전송 버튼을 누르면 input에 입력한 값이 공백이면 알림창 띄우고, 
+  //공백이 아니면 success.html로 이동
+  
+  document.querySelector('form').addEventListener('submit',function(){
+
+    event.preventDefault();
+    var input = document.querySelector('.text-input').value;
+    var input2 = document.querySelector('.password-input').value;
+    var pw = document.querySelector('.password-input').value.length;
+
+    if(input === ''){
+      alert('아이디를 입력해주세요.');
+    } else if(/\S+@\S+\.\S+/.test(input) == false){
+      alert('이메일 형식으로 입력해주세요.');
+    } else if (input2 === '' || pw < 6){ 
+      alert('패스워드를 6자 이상 입력해주세요.');
+    } else if(/[A-Z]/.test(input2) == false) {
+      alert('패스워드에 대문자도 한 글자 이상 포함되어야 합니다.') 
+    } else {
+      location.href = 'success.html';
+    }
+  })
+
+</script>
+
+
 
       <ul class="list-group">
         <li class="list-group-item">An item</li>
@@ -99,11 +114,14 @@
         <li class="list-group-item">And a fifth one</li>
       </ul>
     </div>
+
+
       
       <div class="main-bg">
         <h4>Shits on Sale</h4>
         <button class="btn btn-danger" id="open">로그인</button>
       </div>
+      
 
       <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     
@@ -119,6 +137,8 @@
         
         
       </script>
+
+
 
 
     <script>
@@ -176,6 +196,9 @@
     const slideContainer = document.querySelector('.slide-container');
     const prev = document.querySelector('.prev');
     const next = document.querySelector('.next');
+    const slide1 = document.querySelector('.slide-1');
+    const slide2 = document.querySelector('.slide-2');
+    const slide3 = document.querySelector('.slide-3');
     let slideIndex = 0;
     const images = ['/img/car1.png', '/img/car2.png', '/img/car3.png'];
 
@@ -215,12 +238,110 @@
         slideContainer.style.transform = `translateX(${translateXValue}vw)`; 
       }
     })
-    
 
+    // prev.addEventListener('click', function(){
+    //   slideIndex--;
+    //   console.log(slideIndex);
+
+    //   if(slideIndex === 0){
+    //     slideContainer.style.transform = 'translateX(0)';
+    //   } else if (slideIndex === -1){
+    //     slideContainer.style.transform = 'translateX(-200vw)';
+    //     slideIndex = 2;
+    //   } else {
+    //     slideContainer.style.transform = 'translateX(-100vw)';
+    //   }
+
+    // })
+
+    // next.addEventListener('click', function(){
+    //   slideIndex++;
+
+    //   if (slideIndex === 1){
+    //     slideContainer.style.transform = 'translateX(-100vw)';
+    //   } else if (slideIndex === 2){
+    //     slideContainer.style.transform = 'translateX(-200vw)';
+    //   } else{
+    //     slideContainer.style.transform = 'translateX(0)';
+    //     slideIndex = 0;
+    //   } 
+    // })
+
+
+    
     
 
   </script>
 
+  <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+  </div> 
+
+  <script>
+
+    const lorem = document.querySelector('.lorem');
+    let scrollTimer;
+
+    document.querySelector('.lorem').addEventListener('scroll', function(){
+      let 박스높이 = lorem.scrollHeight;
+      let 스크롤양 = lorem.scrollTop;
+      let 박스눈높이 = lorem.clientHeight;
+      
+      clearTimeout(scrollTimer);
+
+      scrollTimer = setTimeout(() => {
+        if(박스높이 - 10 < (스크롤양 + 박스눈높이)){
+        alert('동의하셨습니다.')
+      } else {}}, 200);
+    })
+      
+
+  </script>
+
+  <script>
+
+    function ms(m , s){
+      return (m * 60 + s) * 1000; 
+      console.log(ms(1, 30));
+    }
+    
+    function sale(가격, 첫구매여부){
+      let 할인 = 가격 * 0.1;
+
+      if(첫구매여부 === true){
+        const 첫구매자 = (가격 - 할인 - 1.5).toFixed(2);
+         return parseFloat(첫구매자);
+      } else {
+        const 구매자 = (가격 - 할인).toFixed(1);
+        return parseFloat(구매자);
+      }
+    }
+  </script>
+
+  
+<div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" ></div>
+</div>
+
+  <script>
+
+    const 실제높이 = document.querySelector('html').scrollHeight;
+    const 스크롤양 = document.querySelector('html').scrollTop;
+    const 보이는높이 = document.querySelector('html').clientHeight;
+    const proGress = document.querySelector('.progress-bar');
+
+    window.addEventListener('scroll', function(){
+      const totalScrollHeight = 실제높이 - 보이는높이;
+      const percentage = (스크롤양 / totalScrollHeight) * 100;
+      
+      proGress.style.width = `${percentage}%`;
+    })
+
+  </script>
+
+
+
+  <div style="height: 1000px;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
