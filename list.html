@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="layout4.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="card-group container p-2">
+        <div class="card">
+          <img src="https://via.placeholder.com/600">
+          <div class="card-body">
+            <h5>Card title</h5>
+            <p>가격 : 70000</p>
+            <button class="btn btn-danger">주문하기</button>
+          </div>
+        </div>
+        <div class="card ms-2">
+          <img src="https://via.placeholder.com/600">
+          <div class="card-body">
+            <h5>Card title</h5>
+            <p>가격 : 70000</p>
+            <button class="btn btn-danger">주문하기</button>
+          </div>
+        </div>
+        <div class="card ms-2">
+          <img src="https://via.placeholder.com/600">
+          <div class="card-body">
+            <h5>Card title</h5>
+            <p>가격 : 70000</p>
+            <button class="btn btn-danger">주문하기</button>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        var products = [
+          { id : 0, price : 70000, title : 'Blossom Dress' },
+          { id : 1, price : 50000, title : 'Springfield Shirt' },
+          { id : 2, price : 60000, title : 'Black Monastery' }
+        ];
+
+
+
+        // for문을 이용한 방법
+
+        for( i = 0; i < 3; i++){
+          card(i);
+        }
+
+        function card(i){
+
+          let card = document.querySelectorAll('.card')[i];
+
+          card.querySelector('h5').innerHTML = products[i].title;
+          card.querySelector('p').innerHTML = '가격 : ' + products[i].price;
+        }
+
+
+        // 자바스크립트만을 이용한 방법
+
+        // let card1 = document.querySelectorAll('.card')[0];
+        // let card2 = document.querySelectorAll('.card')[1];
+        // let card3 = document.querySelectorAll('.card')[2];
+
+        // card1.querySelector('h5').innerHTML = products[0].title;
+        // card1.querySelector('p').innerHTML = '가격 : ' + products[0].price;
+
+        // card2.querySelector('h5').innerHTML = products[1].title;
+        // card2.querySelector('p').innerHTML = '가격 : ' + products[1].price;
+
+        // card3.querySelector('h5').innerHTML = products[2].title;
+        // card3.querySelector('p').innerHTML = '가격 : ' + products[2].price;
+
+
+      </script> 
+
+
+
+    <script src="layout4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
