@@ -64,6 +64,16 @@
 
       </div>
 
+      <script>
+
+        $.get('https://codingapple1.github.io/price.json').done(function(data){
+          $('#test').html(data.price);
+        }).fail(function(){
+          alert('실패했어요');
+        });
+
+      </script>
+
 
 
     <script src="layout4.js"></script>

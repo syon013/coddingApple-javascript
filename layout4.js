@@ -84,8 +84,10 @@ $('.list').click(function(e){
 // 상품 선택에서 셔츠를 선택하면 사이즈를 선택 하는 select 태그가 나오게 하기
  
 var form = document.querySelector('.form-select');
-var pants = '<option>28</option><option>30</option><option>32</option>';
+// var pants = '<option>28</option><option>30</option><option>32</option>';
+var pants = [28, 30 ,32];
 var shirts = '<option>95</option><option>100</option><option>105</option>';
+
 
     form.addEventListener('change', function(){
         if(form.value == '셔츠'){
@@ -97,7 +99,10 @@ var shirts = '<option>95</option><option>100</option><option>105</option>';
             $('.form-select').eq(1).removeClass('form-hide');
             // document.querySelectorAll('.form-select')[1].innerHTML = '<option>28</option><option>30</option><option>32</option>'
             document.querySelectorAll('.form-select')[1].innerHTML = '';
-            document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', pants);
+            // document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', pants);
+            pants.forEach(function(item){
+                document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', '<option>' + item + '</option>');
+            });
         } else {
             $('.form-select').eq(1).addClass('form-hide');
         }
