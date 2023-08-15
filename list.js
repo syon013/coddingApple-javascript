@@ -8,21 +8,23 @@ for(let i = 0; i < 3; i++) {
     const img = document.createElement('img');
     const h5 = document.createElement('h5');
     const p = document.createElement('p');
+    const btn = document.createElement('button');
     
     
     div.classList.add('col-md-4');
     img.classList.add('w-100');
+    btn.classList.add('list');
     img.src = 'https://picsum.photos/200/300';
     h5.textContent = 'Card title';
     p.textContent = '가격 : 70000';
+    btn.textContent = '구매';
     
     cardlist.appendChild(div);
     div.appendChild(img);
     div.appendChild(h5);
     div.appendChild(p);
+    div.appendChild(btn);
 }
-
-let col = document.querySelectorAll('.col-md-4').length; 
 
 
 var products = [
@@ -30,6 +32,140 @@ var products = [
     { id : 1, price : 50000, title : 'Springfield Shirt' },
     { id : 2, price : 60000, title : 'Black Monastery' }
 ];
+
+/*$('.btn').click(function(){
+    products.sort(function(a, b){
+        return a.price - b.price;
+    });
+    console.log(products);
+})*/
+
+$('#sort').click(function(){
+    products.sort(function(a, b){
+        if(a.title > b.title){
+            return 1;
+        } else if(a.title < b.title){
+            return -1;
+        } else {
+            return 0;
+        }
+    })
+
+    $('.row').html('');
+
+    products.forEach(element => {
+            
+        const div = `<div class='col-md-4'>
+                    <img class='w-100' src='https://picsum.photos/200/300'>
+                        <h5>${element.title}</h5>
+                        <p>가격 : ${element.price}</p>
+                        <button class='btn btn-primary'>구매</button>
+                     </div>`;
+
+                    $('.row').append(div);
+        }
+)});
+
+document.querySelectorAll('.btn')[2].addEventListener('click', function(){
+    products.sort(function(a, b){
+        if(a.title < b.title){
+            return 1;
+        } else if(a.title > b.title){
+            return -1;
+        } else {
+            return 0;
+        }
+    })
+
+    $('.row').html('');
+
+    products.forEach(element => {
+            
+        const div = `<div class='col-md-4'>
+                    <img class='w-100' src='https://picsum.photos/200/300'>
+                        <h5>${element.title}</h5>
+                        <p>가격 : ${element.price}</p>
+                        <button class='btn btn-primary'>구매</button>
+                     </div>`;
+
+                    $('.row').append(div);
+        }
+)});
+
+document.querySelectorAll('.btn')[3].addEventListener('click', function(){
+    const filter = products.filter(function(a){
+        return a.price <= 60000;
+    })
+    $('.row').html('');
+
+    filter.forEach(element => {
+            
+        const div = `<div class='col-md-4'>
+                    <img class='w-100' src='https://picsum.photos/200/300'>
+                        <h5>${element.title}</h5>
+                        <p>가격 : ${element.price}</p>
+                        <button class='btn btn-primary'>구매</button>
+                     </div>`;
+
+                    $('.row').append(div);
+        }
+)});
+
+$('#filterBtn').click(function(){
+    var input = $('.sort');
+    const value = input.val();
+    
+    const filter = products.filter(function(a){
+        return a.price <= value;
+    })
+    $('.row').html('');
+
+    filter.forEach(element => {
+            
+        const div = `<div class='col-md-4'>
+                    <img class='w-100' src='https://picsum.photos/200/300'>
+                        <h5>${element.title}</h5>
+                        <p>가격 : ${element.price}</p>
+                        <button class='btn btn-primary'>구매</button>
+                     </div>`;
+
+                    $('.row').append(div);
+        }
+
+)})
+    const product = [
+        { id : 0, price : 70000, title : 'Blossom Dress' },
+        { id : 1, price : 50000, title : 'Springfield Shirt' },
+        { id : 2, price : 60000, title : 'Black Monastery' }
+    ];
+$('#return').click(function(){
+    
+
+    if(JSON.stringify(products) === JSON.stringify(product)){
+
+        console.log('같음');
+        
+    } else {
+        $('.row').html('');
+
+        product.forEach(element => {
+            
+            const div = `<div class='col-md-4'>
+                        <img class='w-100' src='https://picsum.photos/200/300'>
+                            <h5>${element.title}</h5>
+                            <p>가격 : ${element.price}</p>
+                            <button class='btn btn-primary'>구매</button>
+                         </div>`;
+    
+                        $('.row').append(div);
+            }
+    )
+    }
+})
+
+
+
+
 
 
 for(let i = 0; i < 3; i++){
@@ -52,6 +188,7 @@ function more(url){
                     <img class='w-100' src='https://picsum.photos/200/300'>
                         <h5>${element.title}</h5>
                         <p>가격 : ${element.price}</p>
+                        <button class='btn btn-primary'>구매</button>
                      </div>`;
 
                     $('.row').append(div);
@@ -59,7 +196,7 @@ function more(url){
     ))
 }
 
-$('.btn').click(function(){
+document.querySelectorAll('.btn')[0].addEventListener('click', function(){
     count++;
     if(count == 1){
         more('https://codingapple1.github.io/js/more1.json');
@@ -72,6 +209,28 @@ $('.btn').click(function(){
 })
 
 
+$('.list').click(function(){
+    if(localStorage.getItem('key') == null){
+        localStorage.setItem('cart',JSON.stringify([products[0].title]));
+    }else{
+        localStorage.setItem('cart',JSON.stringify([products[0].title]));
+    }
+})
+
+// var 어레이 = [7,3,5,2,40];
+// var 어레이2 = ['a', 'c','b','d'];
+// 어레이.sort(function(a,b){
+//     return b - a;
+// });
+// 어레이2.sort(function(a,b){
+//     if(a > b){
+//         return 1;
+//     } else if(a < b){
+//         return -1;
+//     } else{
+//         return 0;
+//     }
+// })
 
 
 /*$('.btn').on('click', function(){
