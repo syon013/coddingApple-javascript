@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row"></div>
+
+    </div>
+    
+    <script>
+        let Value = localStorage.getItem('cart');
+
+        if(Value){
+            let cartItem = JSON.parse(Value);
+            console.log(cartItem);
+
+            cartItem.forEach(element => {
+                const div = `<div class='col-md-4'>
+                        <img class='w-100' src='https://picsum.photos/200/300'>
+                            <h5>${element.title}</h5>
+                            <p>${element.price}</p>
+                        </div>`;    
+
+                document.querySelector('.row').innerHTML += div;
+            });
+        
+            
+        } else{
+            console.log('값이 없습니다.');
+        }
+        
+
+    </script>
+
+</body>
+</html>
