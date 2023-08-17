@@ -212,58 +212,51 @@ document.querySelectorAll('.btn')[0].addEventListener('click', function(){
 // 2. 해당 상품의 이름을 가져와서
 // 3. 장바구니에 담는다.
 
-var counters = [];
+// var counters = [];
 
-$('.buy').click(function(e){
-    var title = $(e.target).siblings('h5').text();
-    var price = $(e.target).siblings('p').text();
-    var cartItem = JSON.parse(localStorage.getItem('cart')); 
+// $('.buy').click(function(e){
+//     var title = $(e.target).siblings('h5').text();
+//     var price = $(e.target).siblings('p').text();
+//     var cartItem = JSON.parse(localStorage.getItem('cart')); 
 
 
 
-    if(!cartItem) { 
-        cartItem = [];
-    }
-
-    if(!cartItem.includes(title)){
-        cartItem.push({title, price});
-        localStorage.setItem('cart', JSON.stringify(cartItem));
-    } else{
-        count++;
-        console.log('이미 장바구니에 담긴 상품입니다.');
-    }
-})
-
-    var buttonIndex = $('.buy').index(this);
-    if(!counters[buttonIndex]){
-        counters[buttonIndex] = 0;
-    } else {
-        counters[buttonIndex]++;
-    }
-    count = counters[buttonIndex];
-
-    console.log(count);
-
-// const buyBtn = document.querySelectorAll('.buy');
-
-// buyBtn.forEach(element => {
-//     element.addEventListener('click', function(){
-//         const productName = element.parentNode.querySelector('h5').innerHTML;
-//         let cartItem = JSON.parse(localStorage.getItem('cart'));
-
-//         if(!cartItem) {
-//             cartItem = [];
-//         }
-        
-//         if(!cartItem.includes(productName)){
-//             cartItem.push(productName);
-//             localStorage.setItem('cart', JSON.stringify(cartItem));
-//         } else {
-//             alert('이미 장바구니에 담긴 상품입니다.');
-//         }
-    
+//     if(!cartItem) { 
+//         cartItem = [];
 //     }
-// )})
+
+//     if(!cartItem.includes(title)){
+//         cartItem.push({title, price});
+//         localStorage.setItem('cart', JSON.stringify(cartItem));
+//     } else{
+//         count++;
+//         console.log('이미 장바구니에 담긴 상품입니다.');
+//     }
+// })
+
+
+const buyBtn = document.querySelectorAll('.buy');
+
+
+buyBtn.forEach(element => {
+    element.addEventListener('click', function(){
+        
+        const productName = element.parentNode.querySelector('h5').innerHTML;
+        let cartItem = JSON.parse(localStorage.getItem('cart'));
+
+        if(!cartItem) {
+            cartItem = [];
+        }
+        
+        if(!cartItem.includes(productName)){
+            cartItem.push(productName);
+            localStorage.setItem('cart', JSON.stringify(cartItem));
+        } else {
+            alert('이미 장바구니에 담긴 상품입니다.');
+        }
+    console.log(count);
+    }
+)})
 
 
 
