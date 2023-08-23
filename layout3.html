@@ -184,13 +184,13 @@
   <div style="overflow: hidden;">
     <div class="slide-container">
       <div class="slide-box">
-        <img src="/img/car1.png">
+        <img src="/img/car1.png" draggable="false">
       </div>
       <div class="slide-box">
-        <img src="/img/car2.png">
+        <img src="/img/car2.png" draggable="false">
       </div>
       <div class="slide-box">
-        <img src="/img/car3.png">
+        <img src="/img/car3.png" draggable="false">
       </div>
     </div>
   </div>  
@@ -200,6 +200,101 @@
   <button class="slide-2">2</button>
   <button class="slide-3">3</button>
   <button class="next">다음</button>
+
+  <script>
+
+    // 응용1. 나머지 2번, 3번 사진도 스와이프 기능이 가능하도록 만들기
+    // 응용2. 첫 사진을 우측으로 스와이프 못하게 막기
+    // 응용3. 코드만 따라쳤다면 싹 지우고 1주 후에 답보지 말고 직접 만들어보기
+
+    let startX; // 시작 좌표
+    let dragging = false; // 마우스 누르고 있는지 여부
+    let translation = 0; // 좌표 이동 거리
+
+    // ---------- 1번 사진 ----------
+
+    $('.slide-box').eq(0).on('mousedown', function(e){ // 마우스 누르는 순간
+      startX = e.clientX; // 시작 좌표를 e.clientX로 설정
+      dragging = true; // 마우스 누르고 있는지 여부를 true로 설정
+    });
+
+    $('.slide-box').eq(0).on('mousemove', function(e){ // 마우스 움직이는 순간
+      translation = e.clientX - startX; // 좌표 이동 거리를 e.clientX - startX로 설정
+      
+    if(dragging == true){ // 마우스 누르고 있는지 여부가 true일 때
+      $('.slide-container')
+      .css('transform', `translateX(${e.clientX - startX}px)`); // 슬라이드 컨테이너의 transform을 translateX(${e.clientX - startX}px)로 설정
+      console.log(e.clientX);
+    }
+    });
+
+    $('.slide-box').eq(0).on('mouseup', function(e){ // 마우스 누르고 뗀 순간
+      console.log(translation); 
+      if(translation <= -100){ // 좌표 이동 거리가 -100보다 작거나 같을 때
+        $('.slide-container') // 슬라이드 컨테이너에
+        .css('transition', 'transform 0.5s ease-in-out') // transition을 transform 0.5s ease-in-out로 설정 (애니메이션 움직임 부드럽게)
+        .css('transform', `translateX(-100vw)`); // transform을 translateX(-100vw)로 설정 (2번 사진으로 이동)
+      } else if(translation > -100){ // 좌표 이동 거리가 -100보다 클 때) {
+        $('.slide-container') // 슬라이드 컨테이너에
+        .css('transition', 'transform 0.5s ease-in-out') // transition을 transform 0.5s ease-in-out로 설정 (애니메이션 움직임 부드럽게)
+        .css('transform', `translateX(0vw)`);  // transform을 translateX(0vw)로 설정 (1번 사진으로 이동)
+      } else if(translation > 0){
+        $('.slide-container') // 슬라이드 컨테이너에
+        .css('transform', `translateX(0vw)`);  // transform을 translateX(0vw)로 설정 (1번 사진으로 이동)
+      }
+
+      setTimeout(()=>{ // 0.5초 후에
+        $('.slide-container').css('transition', 'none'); // 슬라이드 컨테이너의 transition을 none으로 설정 (애니메이션 움직임 없애기) * 이걸 안해주면 버그 발생 *
+      }, 500);
+      dragging = false; // 마우스 누르고 있는지 여부를 false로 설정
+    });
+
+    // ----------- 2번 사진 ------------
+
+    
+
+    $('.slide-box').eq(1).on('mousedown', function(e){
+      startX = e.clientX;
+      dragging = true;
+    });
+
+    $('.slide-box').eq(1).on('mousemove', function(e){
+
+    if(dragging == true){
+      let client = (e.clientX + 1000) ;
+      translation = client - startX;
+      console.log(client)
+
+      $('.slide-container')
+      .css('transform', `translateX(${client - startX})`);
+      console.log(translation);
+      }
+    });
+
+    $('.slide-box').eq(1).on('mouseup', function(e){
+      
+      if(translation > -100){
+        $('.slide-container')
+        .css('transition', 'transform 0.5s ease-in-out')
+        .css('transform', `translateX(-200vw)`);
+      } else if(translation < 100){
+        $('.slide-container')
+        .css('transition', 'transform 0.5s ease-in-out')
+        .css('transform', `translateX(0vw)`);  
+      } else {
+        $('.slide-container')
+        .css('transition', 'transform 0.5s ease-in-out')
+        .css('transform', `translateX(-100vw)`);  
+      }
+
+      setTimeout(()=>{
+        $('.slide-container').css('transition', 'none');
+      }, 500);
+      dragging = false;
+    });
+    
+  </script>
+
 
   <script>
 
