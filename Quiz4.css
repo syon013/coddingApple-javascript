@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h4{
+    font-size : 15px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(150, 151, 150);
+    margin : 0 20px;
+    display : flex;
+    align-items : center;
+}
+
+a:hover{
+    color : white;
+}
+
+img{
+    height : auto;
+    object-fit: scale-down;
+    margin : 20px 10px 0 0px;
+    padding-left : 10px;
+    padding-right : 10px;
+}
+
+.nav{
+    height : 50px;
+    background-color: rgb(33, 37, 41);
+}
+
+.logo-title{
+    margin : 0 10px 0 10px;
+    color : white;
+    display : flex;
+    align-items : center;
+}
+
+.containers{
+    width : 100%;
+    height : 100%;
+    background: rgb(244,244,244);
+}
+
+input[type="text"]{
+    height : 30px;
+    border : 1px solid rgb(150, 151, 150);
+    margin : 10px 0 10px 0;
+    padding : 0 10px;
+    font-size : 20px;
+}
+
+.card{
+    overflow : hidden;
+    height : 100%;
+}
+
+.card a{
+    text-decoration : none;
+    color : white;
+    margin-left : 0;
+}
+
+.btn {
+    background-color: rgb(33, 37, 41);
+    border : none;
+}
+
+.cart-main{
+    width : 95%;
+    height : 100%;
+    margin : 0 auto;
+    margin-bottom : 20px;
+    background: rgb(226, 226, 226);
+    overflow-x: hidden;
+}
+
+.cart-title{
+    width : 100%;
+    font-size : 30px;
+    font-weight : bold;
+}
+
+.cart-drag{
+    width : 95%;
+    height : 200px;
+    background-color: black;
+    margin : auto;
+    margin-bottom : 20px;
+}
+
+.cart-title h4{
+    font-size : 15px;
+    font-weight : bold;
+    margin : 10px 0 5px 20px;
+}
+
+.cart-drag span{
+    font-size : 15px;
+    display : block;
+    text-align : center;
+    padding-top : 100px;
+    color : white;
+}
+
