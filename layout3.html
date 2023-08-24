@@ -183,13 +183,13 @@
   
   <div style="overflow: hidden;">
     <div class="slide-container">
-      <div class="slide-box">
+      <div class="slide-box" id="image-1">
         <img src="/img/car1.png" draggable="false">
       </div>
-      <div class="slide-box">
+      <div class="slide-box" id="image-2" >
         <img src="/img/car2.png" draggable="false">
       </div>
-      <div class="slide-box">
+      <div class="slide-box" id="image-3">
         <img src="/img/car3.png" draggable="false">
       </div>
     </div>
@@ -216,11 +216,16 @@
     $('.slide-box').eq(0).on('mousedown', function(e){ // 마우스 누르는 순간
       startX = e.clientX; // 시작 좌표를 e.clientX로 설정
       dragging = true; // 마우스 누르고 있는지 여부를 true로 설정
+      translation = 0;
     });
 
     $('.slide-box').eq(0).on('mousemove', function(e){ // 마우스 움직이는 순간
       translation = e.clientX - startX; // 좌표 이동 거리를 e.clientX - startX로 설정
-      
+
+      if(translation > 0) {
+        return;
+      }
+
     if(dragging == true){ // 마우스 누르고 있는지 여부가 true일 때
       $('.slide-container')
       .css('transform', `translateX(${e.clientX - startX}px)`); // 슬라이드 컨테이너의 transform을 translateX(${e.clientX - startX}px)로 설정
@@ -256,28 +261,27 @@
     $('.slide-box').eq(1).on('mousedown', function(e){
       startX = e.clientX;
       dragging = true;
+      translation = 0;
     });
 
     $('.slide-box').eq(1).on('mousemove', function(e){
 
-    if(dragging == true){
-      let client = (e.clientX + 1000) ;
+    if(dragging === true){
+      let client = e.clientX ;
+      const prevImage = $('#image-1');
       translation = client - startX;
-      console.log(client)
 
       $('.slide-container')
-      .css('transform', `translateX(${client - startX})`);
-      console.log(translation);
+      .css('transform', `translateX(${client - startX - prevImage.width()}px)`);
       }
     });
 
     $('.slide-box').eq(1).on('mouseup', function(e){
-      
-      if(translation > -100){
+     if(translation <= -100){
         $('.slide-container')
         .css('transition', 'transform 0.5s ease-in-out')
         .css('transform', `translateX(-200vw)`);
-      } else if(translation < 100){
+      } else if(translation > 100){
         $('.slide-container')
         .css('transition', 'transform 0.5s ease-in-out')
         .css('transform', `translateX(0vw)`);  
